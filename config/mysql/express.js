@@ -8,7 +8,7 @@ module.exports = function () {
     var app = express();
     app.set('view engine', 'html');
     nunjucks.configure('./views', {
-        express : app
+        express: app
     });
     app.use(bodyPaser.urlencoded({ extended: false }));
     app.use(session({

@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main</title>
 </head>
+
 <body>
     <h1><a href="/">Travel Planner</a></h1>
+    {% if id or admin%}
+    {% if admin %}
+    <h2><a href="/managerPage">Manager</a></h2>
+    <h1>Welcome, {{admin}}</h1>
+    {% else %}
+    <h1>Welcome, {{id}}</h1>
+    {% endif %}
+    {% else %}
+    <h1>Welcome, Guest!</h1>
+    {% endif %}
     <div>
         <ul>
             <li><a href="#">서울</a></li>
             <li><a href="#">부산</a></li>
             <li><a href="#">제주</a></li>
-          </ul>
+        </ul>
     </div>
+    {% if id or admin %}
+    <div>
+        <a href="/logout">Logout</a>
+    </div>
+    {% else %}
     <div>
         <a href="/login">Login</a>
     </div>
+    {% endif %}
     <div>
         <a href="#">Make Plans</a>
     </div>
@@ -30,4 +48,5 @@
         </form>
     </div>
 </body>
+
 </html>

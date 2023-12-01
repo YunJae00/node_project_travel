@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Manager</h1>
+    <form action='/manager/accommodation/new' method='post'>
+        <h2>숙소 등록</h2>
+        <p>
+            <strong>숙소 이름</strong>
+            <input type="text" name="accommodation_name" placeholder="숙소 이름">
+            <strong>숙소 주소</strong>
+            <input type="text" name="accommodation_address" placeholder="숙소 주소">
+        </p>
+        <input type="submit" />
+    </form>
+    <form action='/manager/tour_spot/new' method='post'>
+        <h2>관광지 등록</h2>
+        <p>
+            <strong>관광지 이름</strong>
+            <input type="text" name="spot_name" placeholder="관광지 이름">
+            <strong>관광지 주소</strong>
+            <input type="text" name="spot_address" placeholder="관광지 주소">
+        </p>
+        <input type="submit" />
+    </form>
+    <div>
+        <h3>등록된 숙소</h3>
+        <ul>
+            
+        </ul>
+    </div>
+    <div>
+        <h3>등록된 관광지</h3>
+        <ul>
+            
+        </ul>
+    </div>
+</body>
+
+</html>

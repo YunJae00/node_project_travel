@@ -8,14 +8,14 @@ module.exports = function (app) {
     app.use(passport.initialize());
     app.use(passport.session());
     passport.serializeUser(function (user, done) {
-        done(null, user.authId);
+        done(null, user.auth_id);
     });
     passport.deserializeUser(function (id, done) {
         var sql = 'SELECT * FROM users';
         conn.query(sql, function (err, results) {
             for (var i = 0; i < results.length; i++) {
                 var user = results[i];
-                if (user.authId === id) {
+                if (user.auth_id === id) {
                     return done(null, user);
                 }
             }
@@ -26,11 +26,11 @@ module.exports = function (app) {
         function (username, password, done) {
             var uname = username;
             var pwd = password;
-            var sql = 'SELECT * FROM users WHERE user_name = ?';
+            var sql = 'SELECT * FROM users WHERE ID = ?';
             conn.query(sql, [uname], function (err, results) {
                 for (var i = 0; i < results.length; i++) {
                     var user = results[i];
-                    if (uname === user.user_name) {
+                    if (uname === user.ID) {
                         return hasher({ password: pwd, salt: user.salt }, function (err, pass, salt, hash) {
                             if (hash === user.password) {
                                 done(null, user);
