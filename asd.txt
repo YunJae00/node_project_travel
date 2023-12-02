@@ -37,3 +37,65 @@ chat gpt 사용 txt 연결 ( 여행 계획 페이지 이동 )
 
 <여행 계획 공유 게시판>
 글 등록 ( 여행 계획 공유 포함 )
+
+
+
+-- 사용자 정보를 저장하는 테이블
+CREATE TABLE `travel`.`users` (
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `auth_id` VARCHAR(45) NOT NULL,
+  `user_name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `salt` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`user_id`)
+);
+
+-- 여행 계획 정보를 저장하는 테이블
+CREATE TABLE `travel`.`travel_plan` (
+  `plan_id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `start_date` DATETIME NOT NULL,
+  `end_date` DATETIME NOT NULL,
+  `departure_transportation` VARCHAR(255),
+  `return_transportation` VARCHAR(255),
+  PRIMARY KEY (`plan_id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
+);
+
+-- 날짜별 머무를 숙소 정보를 저장하는 테이블
+CREATE TABLE `travel`.`day_accommodations` (
+  `day_accommodation_id` INT NOT NULL AUTO_INCREMENT,
+  `plan_id` INT NOT NULL,
+  `date` DATE,
+  `accommodation_id` INT NOT NULL,
+  PRIMARY KEY (`day_accommodation_id`),
+  FOREIGN KEY (`plan_id`) REFERENCES `travel_plan` (`plan_id`) ON DELETE CASCADE,
+  FOREIGN KEY (`accommodation_id`) REFERENCES `accommodation_info` (`accommodation_id`) ON DELETE CASCADE
+);
+
+-- 날짜별 관광지 정보를 저장하는 테이블
+CREATE TABLE `travel`.`day_tour_spots` (
+  `day_spot_id` INT NOT NULL AUTO_INCREMENT,
+  `plan_id` INT NOT NULL,
+  `date` DATE NOT NULL,
+  `spot_id` INT NOT NULL,
+  PRIMARY KEY (`day_spot_id`),
+  FOREIGN KEY (`plan_id`) REFERENCES `travel_plan` (`plan_id`) ON DELETE CASCADE,
+  FOREIGN KEY (`spot_id`) REFERENCES `tour_spots` (`spot_id`) ON DELETE CASCADE
+);
+
+-- 숙소 정보를 저장하는 테이블
+CREATE TABLE `travel`.`accommodation_info` (
+  `accommodation_id` INT NOT NULL AUTO_INCREMENT,
+  `accommodation_name` VARCHAR(255) NOT NULL,
+  `address` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`accommodation_id`)
+);
+
+-- 관광지 정보를 저장하는 테이블
+CREATE TABLE `travel`.`tour_spots` (
+  `spot_id` INT NOT NULL AUTO_INCREMENT,
+  `spot_name` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`spot_id`)
+);
