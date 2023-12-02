@@ -2,32 +2,190 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html,
+        body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
-        <form action='/register' method='post'>
-            <p>
-                <strong>ID</strong>
-                <input type="text" name="id" placeholder="ID">
-            </p>
-            <p>
-                <strong>Password</strong>
-                <input type="password" name="password" placeholder="Password">
-            </p>
-            <p>
-                <strong>Username</strong>
-                <input type="text" name="username" placeholder="Username">
-            </p>
-            <p>
-                <strong>Email</strong>
-                <input type="text" name="email" placeholder="Email">
-            </p>
-            <input type="submit" />
-        </form>
+    <div class="flex flex-col justify-start items-center gap-40 pb-40 bg-white">
+        <div
+            class="flex justify-between items-center flex-grow-0 flex-shrink-0 w-[1440px] h-[72px] relative overflow-hidden px-[98px] py-2 bg-white border-t-0 border-r-0 border-b border-l-0 border-[#dee5ed]">
+            <div class="flex-grow-0 flex-shrink-0 w-[138px] h-6">
+                <p class="absolute left-[98px] top-6 text-xl font-bold text-left text-[#7b95b7]">
+                    <a href="/">Travel Planner</a>
+                </p>
+            </div>
+            <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-12">
+                <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]"><a href="/">Home</a></p>
+                <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]"><a href="#">Travel Spots</a>
+                </p>
+                <div class="flex justify-start items-start flex-grow-0 flex-shrink-0">
+                    <div
+                        class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-3 rounded-[50px] bg-[#486284] border border-[#486284]">
+                        <p class="flex-grow-0 flex-shrink-0 text-base text-left text-white"><a href="/login">Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[1216px] h-[354px] gap-[31px]">
+            <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 w-[612px] gap-6">
+                <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-4">
+                    <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2">
+                        <p class="flex-grow-0 flex-shrink-0 w-[612px] text-6xl font-bold text-left text-[#486284]">
+                            Travel Planner
+                        </p>
+                        <p class="flex-grow-0 flex-shrink-0 w-[612px] text-[21px] font-medium text-left text-[#486284]">
+                            Create a new Account
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <form action='/register' method='post'>
+                <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 h-80 w-[422px] relative gap-[31px]">
+                    <div class="flex-grow-0 flex-shrink-0 w-[421px] h-[39px]">
+                        <div class="flex justify-start items-start w-[421px] h-[39px] absolute left-0 top-0 gap-6">
+                            <svg width="34" height="36" viewBox="0 0 34 36" fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="flex-grow-0 flex-shrink-0 w-[34px] h-9 relative" preserveAspectRatio="none">
+                                <path d="M3.54175 14.25L17.0001 6L30.4584 14.25" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M9.91675 31.5V30C9.91675 28.0109 10.663 26.1032 11.9914 24.6967C13.3198 23.2902 15.1215 22.5 17.0001 22.5C18.8787 22.5 20.6804 23.2902 22.0088 24.6967C23.3371 26.1032 24.0834 28.0109 24.0834 30V31.5"
+                                    stroke="black" stroke-width="1.5"></path>
+                                <path
+                                    d="M17 22.5C18.1272 22.5 19.2082 22.0259 20.0052 21.182C20.8022 20.3381 21.25 19.1935 21.25 18C21.25 16.8065 20.8022 15.6619 20.0052 14.818C19.2082 13.9741 18.1272 13.5 17 13.5C15.8728 13.5 14.7918 13.9741 13.9948 14.818C13.1978 15.6619 12.75 16.8065 12.75 18C12.75 19.1935 13.1978 20.3381 13.9948 21.182C14.7918 22.0259 15.8728 22.5 17 22.5Z"
+                                    stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </svg>
+                            <div class="flex-grow-0 flex-shrink-0 w-[289px] h-9">
+                                <div class="flex flex-col justify-between items-start w-[289px] h-9 absolute left-[58px] top-0 pl-[18px] pr-2 py-2 rounded-lg bg-white border border-[#f1f3f7]"
+                                    style="box-shadow: 0px 1px 4px 0 rgba(25,33,61,0.08);">
+                                    <div
+                                        class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1">
+                                        <p class="flex-grow-0 flex-shrink-0 text-sm text-left text-[#6d758f]">
+                                            <input type="text" name="id" placeholder="User name (ID)">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-grow-0 flex-shrink-0 w-[100px] h-[100px] relative overflow-hidden"></div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-0 flex-shrink-0 w-[421px] h-[39px]">
+                        <div class="flex justify-start items-start w-[421px] h-[39px] absolute left-0 top-[70px] gap-6">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="flex-grow-0 flex-shrink-0 w-8 h-8 relative"
+                                preserveAspectRatio="none">
+                                <path
+                                    d="M21 2C19.5946 1.99968 18.2087 2.32857 16.9532 2.96031C15.6978 3.59205 14.6079 4.50908 13.7707 5.63792C12.9335 6.76675 12.3723 8.07599 12.1322 9.46074C11.8921 10.8455 11.9797 12.2672 12.388 13.612L2 24V30H8L18.388 19.612C19.6259 19.9878 20.9303 20.0922 22.2122 19.9183C23.4941 19.7443 24.7235 19.2961 25.8165 18.604C26.9095 17.912 27.8405 16.9925 28.546 15.9081C29.2515 14.8237 29.7149 13.6 29.9047 12.3203C30.0945 11.0407 30.0062 9.7351 29.6458 8.49264C29.2854 7.25019 28.6613 6.10003 27.8162 5.12056C26.9711 4.14109 25.9247 3.35532 24.7485 2.81681C23.5722 2.2783 22.2937 1.9997 21 2ZM21 18C20.3115 17.9996 19.6268 17.8979 18.968 17.698L17.821 17.35L16.974 18.197L13.793 21.378L12.414 20L11 21.414L12.379 22.793L10.793 24.379L9.414 23L8 24.414L9.379 25.793L7.172 28H4V24.828L13.802 15.026L14.65 14.179L14.302 13.032C13.8746 11.623 13.9023 10.1151 14.3814 8.72277C14.8604 7.33045 15.7662 6.12463 16.97 5.27683C18.1739 4.42902 19.6144 3.98242 21.0867 4.00053C22.559 4.01864 23.9881 4.50056 25.1707 5.37772C26.3533 6.25488 27.2292 7.48262 27.6738 8.8863C28.1184 10.29 28.1091 11.7981 27.6471 13.1962C27.1852 14.5942 26.2941 15.811 25.1008 16.6735C23.9074 17.5359 22.4724 18.0001 21 18Z"
+                                    fill="black"></path>
+                                <path
+                                    d="M22 12C23.1046 12 24 11.1046 24 10C24 8.89543 23.1046 8 22 8C20.8954 8 20 8.89543 20 10C20 11.1046 20.8954 12 22 12Z"
+                                    fill="black"></path>
+                            </svg>
+                            <div class="flex-grow-0 flex-shrink-0 w-[289px] h-9">
+                                <div class="flex flex-col justify-between items-start w-[289px] h-9 absolute left-14 top-0 pl-[18px] pr-2 py-2 rounded-lg bg-white border border-[#f1f3f7]"
+                                    style="box-shadow: 0px 1px 4px 0 rgba(25,33,61,0.08);">
+                                    <div
+                                        class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1">
+                                        <p class="flex-grow-0 flex-shrink-0 text-sm text-left text-[#6d758f]">
+                                            <input type="password" name="password" placeholder="Password">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-grow-0 flex-shrink-0 w-[100px] h-[100px] relative overflow-hidden"></div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-0 flex-shrink-0 w-[421px] h-[39px]">
+                        <div
+                            class="flex justify-start items-start w-[421px] h-[39px] absolute left-0 top-[140px] gap-6">
+                            <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="flex-grow-0 flex-shrink-0 w-[32.67px] h-8 relative" preserveAspectRatio="none">
+                                <path
+                                    d="M16.3333 8C16.597 8 16.8548 8.0782 17.0741 8.22471C17.2934 8.37122 17.4643 8.57945 17.5652 8.82309C17.6661 9.06672 17.6925 9.33481 17.641 9.59345C17.5896 9.8521 17.4626 10.0897 17.2761 10.2761C17.0897 10.4626 16.8521 10.5896 16.5935 10.641C16.3348 10.6925 16.0667 10.6661 15.8231 10.5652C15.5795 10.4643 15.3712 10.2934 15.2247 10.0741C15.0782 9.85483 15 9.59704 15 9.33333C15 8.97971 15.1405 8.64057 15.3905 8.39052C15.6406 8.14048 15.9797 8 16.3333 8ZM8.33333 18.6667H24.3333V22.6667H8.33333V18.6667ZM27 8H21.6667V4H11V8H5.66667C4.95942 8 4.28115 8.28095 3.78105 8.78105C3.28095 9.28115 3 9.95942 3 10.6667V25.3333C3 26.0406 3.28095 26.7189 3.78105 27.219C4.28115 27.719 4.95942 28 5.66667 28H27C27.7072 28 28.3855 27.719 28.8856 27.219C29.3857 26.7189 29.6667 26.0406 29.6667 25.3333V10.6667C29.6667 9.95942 29.3857 9.28115 28.8856 8.78105C28.3855 8.28095 27.7072 8 27 8ZM13.6667 6.66667H19V13.3333H13.6667V6.66667ZM27 25.3333H5.66667V13.3333H11C11 14.0406 11.281 14.7189 11.781 15.219C12.2811 15.719 12.9594 16 13.6667 16H19C19.7072 16 20.3855 15.719 20.8856 15.219C21.3857 14.7189 21.6667 14.0406 21.6667 13.3333H27V25.3333Z"
+                                    fill="black"></path>
+                            </svg>
+                            <div class="flex-grow-0 flex-shrink-0 w-[289px] h-9">
+                                <div class="flex flex-col justify-between items-start w-[289px] h-9 absolute left-[56.67px] top-0 pl-[18px] pr-2 py-2 rounded-lg bg-white border border-[#f1f3f7]"
+                                    style="box-shadow: 0px 1px 4px 0 rgba(25,33,61,0.08);">
+                                    <div
+                                        class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1">
+                                        <p class="flex-grow-0 flex-shrink-0 text-sm text-left text-[#6d758f]">
+                                            <input type="text" name="username" placeholder="Full Name">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-grow-0 flex-shrink-0 w-[100px] h-[100px] relative overflow-hidden"></div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-0 flex-shrink-0 w-[421px] h-[39px]">
+                        <div
+                            class="flex justify-start items-start w-[421px] h-[39px] absolute left-0 top-[210px] gap-6">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="flex-grow-0 flex-shrink-0 w-8 h-8 relative"
+                                preserveAspectRatio="none">
+                                <path
+                                    d="M16.0001 29.3333C14.1556 29.3333 12.4223 28.9831 10.8001 28.2827C9.17786 27.5822 7.76675 26.6324 6.56675 25.4333C5.36675 24.2333 4.41697 22.8222 3.71741 21.2C3.01786 19.5778 2.66764 17.8444 2.66675 16C2.66675 14.1556 3.01697 12.4222 3.71741 10.8C4.41786 9.17778 5.36764 7.76666 6.56675 6.56666C7.76675 5.36666 9.17786 4.41689 10.8001 3.71733C12.4223 3.01778 14.1556 2.66755 16.0001 2.66666C17.8445 2.66666 19.5779 3.01689 21.2001 3.71733C22.8223 4.41778 24.2334 5.36755 25.4334 6.56666C26.6334 7.76666 27.5836 9.17778 28.2841 10.8C28.9845 12.4222 29.3343 14.1556 29.3334 16V17.9333C29.3334 19.2444 28.8836 20.3613 27.9841 21.284C27.0845 22.2067 25.9787 22.6676 24.6667 22.6667C23.889 22.6667 23.1556 22.5 22.4667 22.1667C21.7779 21.8333 21.2001 21.3556 20.7334 20.7333C20.089 21.3778 19.361 21.8613 18.5494 22.184C17.7379 22.5067 16.8881 22.6676 16.0001 22.6667C14.1556 22.6667 12.5836 22.0164 11.2841 20.716C9.98453 19.4156 9.3343 17.8436 9.33341 16C9.33341 14.1556 9.98364 12.5836 11.2841 11.284C12.5845 9.98444 14.1565 9.33422 16.0001 9.33333C17.8445 9.33333 19.417 9.98355 20.7174 11.284C22.0179 12.5844 22.6676 14.1564 22.6667 16V17.9333C22.6667 18.5111 22.8556 19 23.2334 19.4C23.6112 19.8 24.089 20 24.6667 20C25.2445 20 25.7223 19.8 26.1001 19.4C26.4779 19 26.6667 18.5111 26.6667 17.9333V16C26.6667 13.0222 25.6334 10.5 23.5667 8.43333C21.5001 6.36666 18.9779 5.33333 16.0001 5.33333C13.0223 5.33333 10.5001 6.36666 8.43341 8.43333C6.36675 10.5 5.33341 13.0222 5.33341 16C5.33341 18.9778 6.36675 21.5 8.43341 23.5667C10.5001 25.6333 13.0223 26.6667 16.0001 26.6667H21.3334C21.7112 26.6667 22.0281 26.7947 22.2841 27.0507C22.5401 27.3067 22.6676 27.6231 22.6667 28C22.6667 28.3778 22.5387 28.6947 22.2827 28.9507C22.0267 29.2067 21.7103 29.3342 21.3334 29.3333H16.0001ZM16.0001 20C17.1112 20 18.0556 19.6111 18.8334 18.8333C19.6112 18.0556 20.0001 17.1111 20.0001 16C20.0001 14.8889 19.6112 13.9444 18.8334 13.1667C18.0556 12.3889 17.1112 12 16.0001 12C14.889 12 13.9445 12.3889 13.1667 13.1667C12.389 13.9444 12.0001 14.8889 12.0001 16C12.0001 17.1111 12.389 18.0556 13.1667 18.8333C13.9445 19.6111 14.889 20 16.0001 20Z"
+                                    fill="black"></path>
+                            </svg>
+                            <div class="flex-grow-0 flex-shrink-0 w-[289px] h-9">
+                                <div class="flex flex-col justify-between items-start w-[289px] h-9 absolute left-14 top-0 pl-[18px] pr-2 py-2 rounded-lg bg-white border border-[#f1f3f7]"
+                                    style="box-shadow: 0px 1px 4px 0 rgba(25,33,61,0.08);">
+                                    <div
+                                        class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1">
+                                        <p class="flex-grow-0 flex-shrink-0 text-sm text-left text-[#6d758f]">
+                                            <input type="text" name="email" placeholder="Email Address">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-grow-0 flex-shrink-0 w-[100px] h-[100px] relative overflow-hidden"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-start items-start flex-grow-0 flex-shrink-0 gap-4">
+                        <div class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[3px] px-[18px] py-3.5 rounded-md bg-[#6d758f]"
+                            style="box-shadow: 0px 1px 4px 0 rgba(25,33,61,0.08);">
+                            <p class="flex-grow-0 flex-shrink-0 text-sm font-semibold text-center text-white">
+                                <input type="submit" value="Register My Account" />
+                            </p>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="flex-grow-0 flex-shrink-0 w-3 h-3 relative"
+                                preserveAspectRatio="xMidYMid meet">
+                                <path d="M5.88477 1.88079L10.2001 6L5.88477 10.1192" stroke="white"
+                                    stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M10.2 6L1.80005 6" stroke="white" stroke-width="1.28571" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div
+                            class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[3px] px-[18px] py-[15px] rounded-md bg-[#f8faff] border border-[#e1e4ed]">
+                            <p class="flex-grow-0 flex-shrink-0 text-sm font-semibold text-center text-[#6d758f]">
+                                <a href="/login">Already have an Account?</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 
