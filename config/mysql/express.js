@@ -23,5 +23,6 @@ module.exports = function () {
             database: 'travel'
         })
     }));
+    app.use(express.static('public'));
     return app;
 }

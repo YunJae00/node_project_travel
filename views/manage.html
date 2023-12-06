@@ -47,177 +47,191 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preview</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      html, body {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        width: 100%;
-        height: 100%;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="flex flex-col justify-start items-center h-[746px] gap-[50px] pb-[50px] bg-white">
-      <div
-        class="flex justify-between items-center flex-grow-0 flex-shrink-0 w-[1440px] h-[72px] relative overflow-hidden px-[98px] py-2 bg-white border-t-0 border-r-0 border-b border-l-0 border-[#dee5ed]"
-      >
-        <div class="flex-grow-0 flex-shrink-0 w-[138px] h-6">
-          <p class="absolute left-[98px] top-6 text-xl font-bold text-left text-[#7b95b7]">
-            <a href="/">Travel Planner</a>
-          </p>
-        </div>
-        <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-12">
-          <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]"><a href="/">Home</a></p>
-          <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]"><a href="#">Travel Spots</a></p>
-          <div class="flex justify-start items-start flex-grow-0 flex-shrink-0">
-            <div
-              class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-3 rounded-[50px] bg-[#486284] border border-[#486284]"
-            >
-              <p class="flex-grow-0 flex-shrink-0 text-base text-left text-white"><a href="/login">Login</a></p>
-            </div>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,
+    body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex flex-col justify-start items-center h-[746px] gap-[50px] pb-[50px] bg-white">
+    <div
+      class="flex justify-between items-center flex-grow-0 flex-shrink-0 w-[1440px] h-[72px] relative overflow-hidden px-[98px] py-2 bg-white border-t-0 border-r-0 border-b border-l-0 border-[#dee5ed]">
+      <div class="flex-grow-0 flex-shrink-0 w-[138px] h-6">
+        <p class="absolute left-[98px] top-6 text-xl font-bold text-left text-[#7b95b7]">
+          <a href="/">Travel Planner</a>
+        </p>
+      </div>
+      <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-12">
+        <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]"><a href="/">Home</a></p>
+        <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]"><a href="/travel_spots">Travel
+            Spots</a>
+        </p>
+        {% if id or admin%}
+        {% if admin %}
+        <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]"><a href="/managerPage">Manager
+            Page</a></p>
+        <div class="flex justify-start items-start flex-grow-0 flex-shrink-0">
+          <div
+            class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-3 rounded-[50px] bg-[#486284] border border-[#486284]">
+            <p class="flex-grow-0 flex-shrink-0 text-base text-left text-white"><a href="/logout">Logout</a>
+            </p>
           </div>
         </div>
-      </div>
-      <form>
-        <div class="flex justify-start items-start flex-grow-0 flex-shrink-0 w-[1281px] gap-5">
+        {% else %}
+        <div class="flex justify-start items-start flex-grow-0 flex-shrink-0">
           <div
-            class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 w-[612px] gap-6"
-          >
+            class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-3 rounded-[50px] bg-[#486284] border border-[#486284]">
+            <p class="flex-grow-0 flex-shrink-0 text-base text-left text-white"><a href="/logout">Logout</a>
+            </p>
+          </div>
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="flex justify-start items-start flex-grow-0 flex-shrink-0">
+          <div
+            class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-3 rounded-[50px] bg-[#486284] border border-[#486284]">
+            <p class="flex-grow-0 flex-shrink-0 text-base text-left text-white"><a href="/login">Login</a>
+            </p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <form method='post'>
+      <div class="flex justify-start items-start flex-grow-0 flex-shrink-0 w-[1281px] gap-5">
+        <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 w-[612px] gap-6">
+          <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2">
+            <p class="flex-grow-0 flex-shrink-0 w-[612px] text-[50px] font-bold text-left text-[#486284]">
+              Manager Page
+            </p>
+          </div>
+          <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-[50px] py-5">
             <div
-              class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2"
-            >
-              <p
-                class="flex-grow-0 flex-shrink-0 w-[612px] text-[50px] font-bold text-left text-[#486284]"
-              >
-                Manager Page
+              class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-[15px] px-2.5">
+              <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]">
+                한국 관광 공사 API 받아오기
               </p>
-            </div>
-            <div
-              class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-[50px] py-5"
-            >
               <div
-                class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-[15px] px-2.5"
-              >
-                <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]">
-                  한국 관광 공사 API 받아오기
+                class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[195px] h-[30px] relative gap-[3px] px-[18px] py-[15px] rounded-md bg-[#f8faff] border border-[#e1e4ed]">
+                <p class="flex-grow-0 flex-shrink-0 text-sm font-semibold text-center text-[#6d758f]">
+                  <button type="submit" formaction="/manager/tour_spot/api">Get Travel Spots API</button>
                 </p>
+              </div>
+            </div>
+            <div class="flex flex-col justify-center items-start flex-grow-0 flex-shrink-0 w-[612px] gap-6 px-2.5">
+              <div class="flex justify-start items-start flex-grow-0 flex-shrink-0 gap-[19px]">
+                <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[87px] h-7 relative gap-1.5">
+                  <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#6d758f]">
+                    <select aria-label="label for the select" name="addressKindU" onchange="addressKindChange(this)">
+                      <option>전체</option>
+                      <option value="1">서울</option>
+                      <option value="6">부산</option>
+                      <option value="4">대구</option>
+                      <option value="2">인천</option>
+                      <option value="5">광주</option>
+                      <option value="3">대전</option>
+                      <option value="7">울산</option>
+                      <!-- <option value="h">세종</option> -->
+                      <option value="31">경기</option>
+                      <option value="32">강원</option>
+                    </select>
+                  </p>
+                </div>
+                <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[87px] h-7 relative gap-1.5">
+                  <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#6d758f]">
+                    <select aria-label="label for the select" id="addressKindD" name="addressKindD">
+                      <option>전체</option>
+                    </select>
+                  </p>
+                </div>
                 <div
-                  class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[195px] h-[30px] relative gap-[3px] px-[18px] py-[15px] rounded-md bg-[#f8faff] border border-[#e1e4ed]"
-                >
-                  <p
-                    class="flex-grow-0 flex-shrink-0 text-sm font-semibold text-center text-[#6d758f]"
-                  >
-                    Get Travel Spots API
+                  class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[195px] h-[30px] relative gap-[3px] px-[18px] py-[15px] rounded-md bg-[#f8faff] border border-[#e1e4ed]">
+                  <p class="flex-grow-0 flex-shrink-0 text-sm font-semibold text-center text-[#6d758f]">
+                    <button type="submit" formaction="/manager/tour_spots">Get Lists From DataBase</button>
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-col justify-center items-start flex-grow-0 flex-shrink-0 w-[612px] gap-6 px-2.5"
-              >
-                <div class="flex justify-start items-start flex-grow-0 flex-shrink-0 gap-[19px]">
-                  <div
-                    class="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[87px] h-7 relative gap-1.5"
-                  >
-                    <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#6d758f]">
-                      <select aria-label="label for the select" name="addressKindU" onchange="addressKindChange(this)">
-                          <option>전체</option>
-                          <option value="a" name="1">서울</option>
-                          <option value="b" name="6">부산</option>
-                          <option value="c" name="4">대구</option>
-                          <option value="d" name="2">인천</option>
-                          <option value="e" name="5">광주</option>
-                          <option value="f" name="3">대전</option>
-                          <option value="g" name="7">울산</option>
-                          <!-- <option value="h">세종</option> -->
-                          <option value="i" name="31">경기</option>
-                          <option value="j" name="32">강원</option>
-                      </select>
-                    </p>
-                  </div>
-                  <div
-                    class="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[87px] h-7 relative gap-1.5"
-                  >
-                    <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#6d758f]">
-                      <select aria-label="label for the select" id="addressKindD" name="addressKindD">
-                        <option>전체</option>
-                    </select>
-                    </p>
-                  </div>
-                  <div
-                    class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[195px] h-[30px] relative gap-[3px] px-[18px] py-[15px] rounded-md bg-[#f8faff] border border-[#e1e4ed]"
-                  >
-                    <p
-                      class="flex-grow-0 flex-shrink-0 text-sm font-semibold text-center text-[#6d758f]"
-                    >
-                      Get Lists From DataBase
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <p
+            </div>
+            <!-- <p
                 class="flex-grow-0 flex-shrink-0 w-[612px] text-[21px] font-medium text-left text-[#486284]"
               >
                 List of Travel Spots
               </p>
-              <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]">nothing</p>
+              {% if results %}
               <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]">
                 <ul>
-                  
-                </ul>
+                  <% for (var i = 0; i < results.length; i++) { %>
+                      <li><%= results[i].spot_name %> - <%= results[i].address %></li>
+                  <% } %>
+              </ul>
               </p>
-            </div>
+              {% else %}
+              <p class="flex-grow-0 flex-shrink-0 text-base text-center text-[#486284]">nothing</p>
+              {% endif %} -->
           </div>
         </div>
-      </form>
-    </div>
-  </body>
-  <script language="javascript" type="text/javascript">
-    function addressKindChange(e){
-      var seoul = new Array('전체','강남구','강동구','강북구','강서구','관악구','광진구','구로구','금천구','노원구','도봉구','동대문구','동작구','마포구','서대문구','서초구','성동구','성북구','송파구','양천구','영등포구','용산구','은평구','종로구','중구','중랑구');
-      var busan = new Array('전체','강서구','금정구','기장군','남구','동구','동래구','부산진구','북구','사상구','사하구','서구','수영구','연제구','영도구','중구','해운대구');
-      var daegu = new Array('전체','남구','달서구','달성군','동구','북구','서구','수성구','중구');
-      var incheon = new Array('전체','강화군','계양구','미추홀구','남동구','동구','부평구','서구','연수구','옹진군','중구');
-      var gwangju = new Array('전체','광산구','남구','동구','북구','서구');
-      var daejeon = new Array('전체','대덕구','동구','서구','유성구','중구');
-      var ulsan = new Array('전체','중구','남구','동구','북구','울주군');
-      var gyeonggi = new Array('전체','가평군','고양시','과천시','광명시','광주시','구리시','군포시','김포시','남양주시','동두천시','부천시','성남시','수원시','시흥시','안산시','안성시','안양시','양주시','양평군','여주시','연천군','오산시','용인시','의왕시','의정부시','이천시','파주시','평택시','포천시','하남시','화성시');
-      var gangwon = new Array('전체','강릉시','고성군','동해시','삼척시','속초시','양구군','양양군','영월군','원주시','인제군','정선군','철원군','춘천시','태백시','평창군','홍천군','화천군','황성군');
-      // cnt[10] = new Array('전체','제천시','청주시','충주시','괴산군','단양군','보은군','영동군','옥천군','음성군','진천군','청원군');
-      // cnt[11] = new Array('전체','공주시','보령시','서산시','아산시','천안시','금산군','논산군','당진군','부여군','서천군','연기군','예산군','청양군','태안군','홍성군');
-      // cnt[12] = new Array('전체','군산시','김제시','남원시','익산시','전주시','정읍시','고창군','무주군','부안군','순창군','완주군','임실군','장수군','진안군');
-      // cnt[13] = new Array('전체','광양시','나주시','목포시','순천시','여수시','여천시','강진군','고흥군','곡성군','구례군','담양군','무안군','보성군','신안군','여천군','영광군','영암군','완도군','장성군','장흥군','진도군','함평군','해남군','화순군');
-      // cnt[14] = new Array('전체','경산시','경주시','구미시','김천시','문겅시','상주시','안동시','영주시','영천시','포항시','고령군','군위군','봉화군','성주군','영덕군','영양군','예천군','울릉군','울진군','의성군','청도군','청송군','칠곡군');
-      // cnt[15] = new Array('전체','거제시','김해시','마산시','밀양시','사천시','울산시','진주시','진해시','창원시','통영시','거창군','고성군','남해군','산청군','양산시','의령군','창녕군','하동군','함안군','함양군','합천군');
-      // cnt[16] = new Array('전체','서귀포시','제주시','남제주군','북제주군');
-      var target = document.getElementById("addressKindD");
+      </div>
+    </form>
+  </div>
+</body>
+<script language="javascript" type="text/javascript">
+  function addressKindChange(e) {
+    var seoul = new Array('전체', '강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구');
+    var busan = new Array('전체', '강서구', '금정구', '기장군', '남구', '동구', '동래구', '부산진구', '북구', '사상구', '사하구', '서구', '수영구', '연제구', '영도구', '중구', '해운대구');
+    var daegu = new Array('전체', '남구', '달서구', '달성군', '동구', '북구', '서구', '수성구', '중구');
+    var incheon = new Array('전체', '강화군', '계양구', '미추홀구', '남동구', '동구', '부평구', '서구', '연수구', '옹진군', '중구');
+    var gwangju = new Array('전체', '광산구', '남구', '동구', '북구', '서구');
+    var daejeon = new Array('전체', '대덕구', '동구', '서구', '유성구', '중구');
+    var ulsan = new Array('전체', '중구', '남구', '동구', '북구', '울주군');
+    var gyeonggi = new Array('전체', '가평군', '고양시', '과천시', '광명시', '광주시', '구리시', '군포시', '김포시', '남양주시', '동두천시', '부천시', '성남시', '수원시', '시흥시', '안산시', '안성시', '안양시', '양주시', '양평군', '여주시', '연천군', '오산시', '용인시', '의왕시', '의정부시', '이천시', '파주시', '평택시', '포천시', '하남시', '화성시');
+    var gangwon = new Array('전체', '강릉시', '고성군', '동해시', '삼척시', '속초시', '양구군', '양양군', '영월군', '원주시', '인제군', '정선군', '철원군', '춘천시', '태백시', '평창군', '홍천군', '화천군', '황성군');
+    // cnt[10] = new Array('전체','제천시','청주시','충주시','괴산군','단양군','보은군','영동군','옥천군','음성군','진천군','청원군');
+    // cnt[11] = new Array('전체','공주시','보령시','서산시','아산시','천안시','금산군','논산군','당진군','부여군','서천군','연기군','예산군','청양군','태안군','홍성군');
+    // cnt[12] = new Array('전체','군산시','김제시','남원시','익산시','전주시','정읍시','고창군','무주군','부안군','순창군','완주군','임실군','장수군','진안군');
+    // cnt[13] = new Array('전체','광양시','나주시','목포시','순천시','여수시','여천시','강진군','고흥군','곡성군','구례군','담양군','무안군','보성군','신안군','여천군','영광군','영암군','완도군','장성군','장흥군','진도군','함평군','해남군','화순군');
+    // cnt[14] = new Array('전체','경산시','경주시','구미시','김천시','문겅시','상주시','안동시','영주시','영천시','포항시','고령군','군위군','봉화군','성주군','영덕군','영양군','예천군','울릉군','울진군','의성군','청도군','청송군','칠곡군');
+    // cnt[15] = new Array('전체','거제시','김해시','마산시','밀양시','사천시','울산시','진주시','진해시','창원시','통영시','거창군','고성군','남해군','산청군','양산시','의령군','창녕군','하동군','함안군','함양군','합천군');
+    // cnt[16] = new Array('전체','서귀포시','제주시','남제주군','북제주군');
+    var target = document.getElementById("addressKindD");
 
-      if(e.value == "a") var d = seoul;
-      else if(e.value == "b") var d = busan;
-      else if(e.value == "c") var d = daegu;
-      else if(e.value == "d") var d = incheon;
-      else if(e.value == "e") var d = gwangju;
-      else if(e.value == "f") var d = daejeon;
-      else if(e.value == "g") var d = ulsan;
-      else if(e.value == "i") var d = gyeonggi;
-      else if(e.value == "j") var d = gangwon;
+    target.options.length = 0;
 
-      target.options.length = 0;
+    var d;
 
-      for(x in d){
-        var opt = document.createElement("option");
-        opt.value = d[x];
-        opt.name = d.indexOf(x).toString();
-        opt.innerHTML = d[x];
-        target.appendChild(opt);
-      }
+    if (e.value == "1") var d = seoul;
+    else if (e.value == "6") var d = busan;
+    else if (e.value == "4") var d = daegu;
+    else if (e.value == "2") var d = incheon;
+    else if (e.value == "5") var d = gwangju;
+    else if (e.value == "3") var d = daejeon;
+    else if (e.value == "7") var d = ulsan;
+    else if (e.value == "31") var d = gyeonggi;
+    else if (e.value == "32") var d = gangwon;
+
+    target.options.length = 0;
+
+    for (var i = 0; i < d.length; i++) {
+      var opt = document.createElement("option");
+      opt.value = i.toString();
+      opt.innerHTML = d[i];
+      target.appendChild(opt);
     }
-  </script>
+  }
+</script>
+
 </html>
