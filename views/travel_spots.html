@@ -25,14 +25,11 @@
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-      /* 테두리 음영 추가 */
       transition: box-shadow 0.3s ease;
-      /* 부드러운 전환 효과 */
     }
 
     .box:hover::before {
       content: attr(data-description);
-      /* 데이터 속성의 값을 가져옴 */
       position: absolute;
       top: 0;
       left: 0;
@@ -63,7 +60,41 @@
       text-align: center;
       font-weight: bold;
       color: white;
-      /* 흰색으로 변경 */
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      max-width: 800px;
+      /* 변경된 max-width 값 */
+      width: 100%;
+      margin: 0 auto;
+      /* 화면 중앙에 정렬되도록 추가 */
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .close-button {
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
     }
   </style>
 </head>
@@ -174,8 +205,276 @@
           <div class="w-[260px] h-[260px] absolute left-[-1px] top-[-1px] bg-[#f1f3f7]"></div>
         </div> -->
       </div>
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button" onclick="closeModal()">×</span>
+          <iframe id="modalIframe" srcdoc='<!-- iframe 내용 생략 -->'></iframe>
+        </div>
+      </div>
     </div>
-  </div>
+    <!-- 모달 관련 스크립트 -->
+
+    <script>
+      // 클릭 이벤트를 추가하여 모달 화면 표시
+      const boxes = document.querySelectorAll('.box');
+      boxes.forEach(box => {
+        box.addEventListener('click', () => {
+          const title = box.querySelector('.box-title').textContent;
+          const modalIframe = document.getElementById('modalIframe');
+
+          // 아이템 클릭 시 모달 화면에 정보 표시
+
+          // iframe 내용 설정 (예: title을 iframe으로 전달)
+          const iframeContent = `
+          <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        html, body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .justify-start {
+            justify-content: flex-start;
+        }
+
+        .items-start {
+            align-items: flex-start;
+        }
+
+        .flex-grow-0 {
+            flex-grow: 0;
+        }
+
+        .flex-shrink-0 {
+            flex-shrink: 0;
+        }
+
+        .gap-[30px] {
+            gap: 30px;
+        }
+
+        .p-[50px] {
+            padding: 50px;
+        }
+
+        .bg-white {
+            background-color: white;
+        }
+
+        .w-[103px] {
+            width: 103px;
+        }
+
+        .h-[50px] {
+            height: 50px;
+        }
+
+        .text-[50px] {
+            font-size: 50px;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-[#7b95b7] {
+            color: #7b95b7;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .left-[98px] {
+            left: 98px;
+        }
+
+        .top-6 {
+            top: 6px;
+        }
+
+        .text-xl {
+            font-size: 1.75rem; /* 조절이 필요하면 조절하세요 */
+        }
+
+        .left-[-1px] {
+            left: -1px;
+        }
+
+        .top-[-1px] {
+            top: -1px;
+        }
+
+        .box {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .box:hover::before {
+            content: attr(data-description);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .box-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            max-width: 800px; /* 변경된 max-width 값 */
+            width: 100%;
+            margin: 0 auto; /* 화면 중앙에 정렬되도록 추가 */
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .close-button {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-[30px] p-[50px] bg-white">
+        <div class="flex justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2.5">
+            <p class="flex-grow-0 flex-shrink-0 w-[103px] h-[50px] text-[50px] font-bold text-left text-[#7b95b7]">
+                서울
+            </p>
+        </div>
+        <div class="flex justify-center items-center flex-grow-0 flex-shrink-0 gap-[30px] p-[30px]">
+            <div class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 rounded-md">
+                <div class="flex-grow-0 flex-shrink-0 w-[430px] h-[430px] bg-[#f1f3f7]"></div>
+            </div>
+            <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 w-[505px] relative gap-[30px]">
+                <p class="flex-grow-0 flex-shrink-0 w-[433px] h-[340px] text-xl font-bold text-left text-[#7b95b7]">
+                    서울, 대한민국의 동서양 문화가 만나는 도시로, 현대적인 하이테크와 전통적인 문화가
+                    공존합니다. 동양의 역사적인 유적지부터 세계적인 쇼핑 명소까지, 다양한 경험과 맛을 즐길
+                    수 있는 도시로 유명합니다. 현대 건축물과 전통 궁궐, 다채로운 음식 문화 등이 어우러져
+                    방문객에게 다양한 즐거움을 선사합니다.
+                </p>
+                <div class="flex-grow-0 flex-shrink-0 w-[193px] h-10">
+                    <div class="flex justify-center items-start absolute left-[156px] top-[370px] gap-4">
+                        <div class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[3px] px-[18px] py-3.5 rounded-md bg-[#6d758f]"
+                            style="box-shadow: 0px 1px 4px 0 rgba(25,33,61,0.08);">
+                            <p class="flex-grow-0 flex-shrink-0 w-[142px] h-[11px] text-sm font-semibold text-center text-white">
+                                Make Travel Plans
+                            </p>
+                            <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="flex-grow-0 flex-shrink-0 w-3 h-3 relative" preserveAspectRatio="xMidYMid meet">
+                                <path
+                                    d="M6.38477 1.8808L10.7001 6.00001L6.38477 10.1192"
+                                    stroke="white"
+                                    stroke-width="1.28571"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                                <path
+                                    d="M10.6998 6L2.2998 6"
+                                    stroke="white"
+                                    stroke-width="1.28571"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+`;
+
+
+
+          modalIframe.srcdoc = iframeContent;
+          const modal = document.getElementById('modal');
+          modal.style.display = 'flex';
+        });
+      });
+
+
+      // 모달 닫기
+      function closeModal() {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none';
+      }
+    </script>
 </body>
 
 </html>
